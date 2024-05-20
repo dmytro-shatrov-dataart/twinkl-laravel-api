@@ -9,6 +9,6 @@ class SubscriptionObserver
 {
     public function created(Subscription $subscription): void
     {
-        $subscription->notify(new WelcomeNotification($subscription));
+        $subscription->notify(new WelcomeNotification());
     }
 }
