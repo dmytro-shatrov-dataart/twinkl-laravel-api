@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  webserver:
+    container_name: twinkl-test-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/home/app
+      - ./docker/php:/usr/local/etc/php/conf.d
+      - ./docker/apache/config/site.conf:/etc/apache2/sites-available/000-default.conf
+      - ./docker/apache/logs:/var/log/apache2
+    ports:
+      - 8008:80
+    env_file: docker/.docker.env
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:8.0
+    env_file: docker/.docker.env
+    ports:
+      - "33066:3306"
