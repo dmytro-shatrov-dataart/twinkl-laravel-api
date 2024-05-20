@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use App\Enum\UserTypeEnum;
+use App\Observers\SubscriptionObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * @property int $id
@@ -13,9 +16,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property UserTypeEnum $user_type
  */
+#[ObservedBy([SubscriptionObserver::class])]
 class Subscription extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     protected $fillable = [
         'first_name',
