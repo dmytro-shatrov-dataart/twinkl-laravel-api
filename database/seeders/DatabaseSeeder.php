@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(SubscriptionSeeder::class);
+        $this->call(BannedIpSeeder::class);
     }
 }
