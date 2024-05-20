@@ -113,7 +113,7 @@ class StoreSubscriptionTest extends TestCase
 
     public function test_store_subscription_email_should_be_unique(): void
     {
-        $existing = (new SubscriptionFactory)->createOne();
+        $existing = (new SubscriptionFactory())->createOne();
 
         $this->postJson('api/subscriptions', [
             'first_name' => 'Dmytro',

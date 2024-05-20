@@ -12,6 +12,6 @@ class SubscriptionSeeder extends Seeder
      */
     public function run(): void
     {
-        (new SubscriptionFactory)->count(10)->create();
+        (new SubscriptionFactory())->count(10)->create();
     }
 }

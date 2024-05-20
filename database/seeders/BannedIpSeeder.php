@@ -12,6 +12,6 @@ class BannedIpSeeder extends Seeder
      */
     public function run(): void
     {
-        (new BannedIpFactory)->count(10)->create();
+        (new BannedIpFactory())->count(10)->create();
     }
 }
