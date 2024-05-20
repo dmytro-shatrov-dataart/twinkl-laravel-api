@@ -8,6 +8,7 @@ use App\Http\Requests\Api\Subscriptions\StoreRequest;
 use App\Http\Resources\SubscriptionResource;
 use App\Models\Subscription;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class StoreController
 {
@@ -15,6 +16,6 @@ class StoreController
     {
         $subscription = Subscription::query()->create($request->validated());
 
-        return new JsonResponse(SubscriptionResource::make($subscription));
+        return new JsonResponse(SubscriptionResource::make($subscription), Response::HTTP_CREATED);
     }
 }
